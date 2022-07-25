@@ -21,7 +21,6 @@ export const fetchVideos = createAsyncThunk<
     rejectValue: string;
   }
 >("videos/fetchVideos", async (type, thunkAPI) => {
-  console.log(type);
   try {
     const { data } = await fetch.get(`videos/${type}`);
     return data;

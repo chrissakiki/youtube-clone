@@ -54,6 +54,7 @@ const Navbar: FC = () => {
       }
     };
     result && uploadAvatardb();
+    //eslint-disable-line
   }, [result]);
 
   useEffect(() => {

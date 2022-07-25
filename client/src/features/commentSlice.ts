@@ -86,7 +86,6 @@ export const commentSlice = createSlice({
     builder.addCase(fetchComments.fulfilled, (state, action) => {
       state.isLoading = false;
       state.comments = action.payload;
-      console.log(action.payload);
     });
     builder.addCase(fetchComments.rejected, (state, action) => {
       state.isLoading = false;

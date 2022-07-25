@@ -39,7 +39,6 @@ const getUser = async (req: express.Request, res: express.Response) => {
 };
 
 const changeAvatar = async (req: express.Request, res: express.Response) => {
-  console.log("here" + req.body.avatar);
   await User.findByIdAndUpdate(req.user._id, { avatar: req.body.avatar });
   res.status(StatusCodes.OK).json("avatar updated");
 };

@@ -11,13 +11,12 @@ import authRoutes from "./routes/authRoutes";
 import notFoundMiddleware from "./middleware/not-found";
 import errorHandleMiddleware from "./middleware/error-handler";
 import cookieParser from "cookie-parser";
-// DEPLOY
-import path from "path";
+
 const app: express.Application = express();
 
 const corsOptions = {
-  optionsSuccessStatus: 200, // For legacy browser support
-  credentials: true, // This is important.
+  optionsSuccessStatus: 200,
+  credentials: true,
   origin: "http://localhost:3000",
   exposedHeaders: ["*", "Authorization"],
   allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
@@ -28,19 +27,10 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
-//DEPLOY && using express static to make them public to access
-
-app.use(express.static(path.resolve(__dirname, "../client/build")));
-
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/videos", videoRoutes);
 app.use("/api/comments", commentRoutes);
-
-// get routes for deployment
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
 
 //middleware routes
 

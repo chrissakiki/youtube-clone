@@ -83,8 +83,6 @@ const trend = async (req: express.Request, res: express.Response) => {
 const categories = async (req: express.Request, res: express.Response) => {
   let cat = <string>req.params.cat;
 
-  console.log(cat);
-
   const videos = await Video.find({ tags: { $in: cat } })
     .limit(40)
     .populate("postedBy");
@@ -147,8 +145,6 @@ const search = async (req: express.Request, res: express.Response) => {
 const tags = async (req: express.Request, res: express.Response) => {
   let tagsQuery = (<string>req.query.tags).split(",");
 
-  console.log(tagsQuery);
-
   const videos = await Video.find({ tags: { $in: tagsQuery } })
     .limit(10)
     .populate("postedBy");
@@ -166,7 +162,7 @@ const getTags = async (req: express.Request, res: express.Response) => {
       return vid.tags;
     })
     .flat();
-  console.log("you here");
+
   res.status(StatusCodes.OK).json([...new Set(tags)]);
 };
 

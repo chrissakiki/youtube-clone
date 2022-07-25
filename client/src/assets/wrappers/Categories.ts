@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   .categories-container {
     position: relative;
     width: 100%;
+    height: 50px;
     .go-left,
     .go-right {
       position: absolute;

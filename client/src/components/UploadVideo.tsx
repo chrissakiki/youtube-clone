@@ -43,15 +43,6 @@ const UploadVideo: FC<Props> = ({ setOpen }) => {
     setTags(e.target.value.split(","));
   };
 
-  // const handleChange = (
-  //   e:
-  //     | React.ChangeEvent<HTMLInputElement>
-  //     | React.ChangeEvent<HTMLTextAreaElement>
-  // ) => {
-  //   setMedia({ ...media, [e.target.name]: e.target.value });
-  //   console.log(media);
-  // };
-
   const uploadFile = (file: File, urlType: keyof VideoT) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + file.name;
@@ -73,10 +64,8 @@ const UploadVideo: FC<Props> = ({ setOpen }) => {
 
         switch (snapshot.state) {
           case "paused":
-            console.log("Upload is paused");
             break;
           case "running":
-            console.log("Upload is running");
             break;
           default:
             break;

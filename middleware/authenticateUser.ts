@@ -18,7 +18,7 @@ const authenticateUser = async (
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET!);
     req.user = payload;
-    console.log(req.user);
+
     next();
   } catch (error: any) {
     throw new UnAuthenticatedError("Expired token");

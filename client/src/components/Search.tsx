@@ -10,13 +10,13 @@ const Search = () => {
   const [videos, setVideos] = useState<VideoT[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const { search } = useLocation();
-  console.log(search);
+
   useEffect(() => {
     const fetchVideos = async () => {
       setLoading(true);
       try {
         const { data } = await fetch.get(`/videos/search${search}`);
-        console.log(data);
+
         setVideos(data);
         setLoading(false);
       } catch (error: any) {

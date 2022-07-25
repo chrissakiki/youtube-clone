@@ -28,13 +28,9 @@ const Comment: FC<Props> = ({ comment, isLoading }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  console.log(comment);
-
-  console.log("my id is : " + currentUser?._id);
-
   const likeComment = async (id: string) => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     try {
       await fetch.put(`/comments/like/${id}`);
@@ -46,7 +42,7 @@ const Comment: FC<Props> = ({ comment, isLoading }) => {
 
   const dislikeComment = async (id: string) => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     try {
       await fetch.put(`/comments/dislike/${id}`);

@@ -20,16 +20,22 @@ const Menu: FC<Props> = ({ darkMode, setDarkMode }) => {
   const { currentUser } = useAppSelector((state) => state.user);
 
   const menuChange = () => {
-    if (window.innerWidth > 900) {
+    if (window.innerWidth < 1100) {
       setShow(true);
     }
+    if (window.innerWidth < 580) {
+      setShow(false);
+    }
   };
+
   useEffect(() => {
     window.addEventListener("resize", menuChange);
 
     return () => {
       window.removeEventListener("resize", menuChange);
     };
+
+    //eslint-disable-line
   }, []);
   return (
     <Wrapper className={show ? "showIcons" : ""}>

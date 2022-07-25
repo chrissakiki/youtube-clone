@@ -106,8 +106,6 @@ const logout = async (req: express.Request, res: express.Response) => {
     .clearCookie("access_token", { path: "/" })
     .status(StatusCodes.OK)
     .send("Removed");
-
-  console.log("you were here");
 };
 
 export { signup, signin, googleSignin, logout };

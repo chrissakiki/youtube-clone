@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, FC } from "react";
-import { useAppSelector } from "./app/hooks";
 
 type values = {
   show: boolean;
@@ -13,7 +12,6 @@ const AppContext = createContext<values>({} as values);
 
 const AppProvider: FC<Props> = ({ children }) => {
   const [show, setShow] = useState<boolean>(true);
-  const { isLoading } = useAppSelector((state) => state.video);
   const values: values = {
     show,
     setShow,

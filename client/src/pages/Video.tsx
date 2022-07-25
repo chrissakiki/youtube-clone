@@ -25,7 +25,6 @@ const Video = () => {
   const { currentUser } = useAppSelector((state) => state.user);
   const { oneVideo, isLoading } = useAppSelector((state) => state.video);
 
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const fetchNewVideo = () => {
@@ -36,20 +35,11 @@ const Video = () => {
 
   useEffect(() => {
     fetchNewVideo();
-    // addView();
   }, [id]);
-
-  // const addView = async () => {
-  //   try {
-  //     await fetch.put(`videos/view/${oneVideo?._id}`);
-  //   } catch (error: any) {
-  //     toast.error(error.response.data.message);
-  //   }
-  // };
 
   const handleLike = async () => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     try {
       await fetch.put(`/users/like/${oneVideo?._id}`);
@@ -61,7 +51,7 @@ const Video = () => {
 
   const handleDislike = async () => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     try {
       await fetch.put(`/users/dislike/${oneVideo?._id}`);
@@ -73,7 +63,7 @@ const Video = () => {
 
   const subscribe = async () => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     if (currentUser?.subscribedChannels?.includes(oneVideo?.postedBy._id!)) {
       try {
@@ -94,7 +84,7 @@ const Video = () => {
 
   const saveVideo = async () => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     try {
       await fetch.put(`/users/saved/${oneVideo?._id}`);
@@ -107,7 +97,7 @@ const Video = () => {
 
   const unsaveVideo = async () => {
     if (!currentUser) {
-      return navigate("/signin");
+      return toast.info("You should Signin first!");
     }
     try {
       await fetch.put(`/users/unsaved/${oneVideo?._id}`);

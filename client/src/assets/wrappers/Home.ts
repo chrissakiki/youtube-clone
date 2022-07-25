@@ -21,6 +21,7 @@ export const Wrapper = styled.div`
     @media (max-width: 580px) {
       padding: 0 20px;
       grid-template-columns: 1fr;
+      grid-row-gap: 7px;
     }
 
     .not-found {
