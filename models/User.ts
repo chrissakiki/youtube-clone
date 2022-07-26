@@ -25,11 +25,13 @@ const UserSchema = new mongoose.Schema<IUser>(
       minlength: 6,
       maxlength: 20,
       unique: true,
+      trim: true,
     },
     email: {
       type: String,
       required: [true, "Please provide an email"],
       unique: true,
+      trim: true,
       validate: {
         validator: validator.isEmail,
         message: "Please provide a valid email",
